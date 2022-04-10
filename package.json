@@ -1,0 +1,25 @@
+{
+    "name": "a03-neil589",
+    "version": "1.0.0",
+    "description": "Logging transactions and handling errors",
+    "main": "server.js",
+    "scripts": {
+      "test": "node server.js --help"
+    },
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/comp426-2022-spring/a04-Neil589.git"
+    },
+    "author": "neil589",
+    "license": "GPL-3.0-or-later",
+    "bugs": {
+      "url": "https://github.com/comp426-2022-spring/a04-Neil589/issues"
+    },
+    "homepage": "https://github.com/comp426-2022-spring/a04-Neil589#readme",
+    "dependencies": {
+      "express": "^4.17.3",
+      "minimist": "^1.2.5",
+      "better-sqlite3": "^7.5.1",
+      "morgan": "^1.10.0"
+    }
+  }
