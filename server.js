@@ -1,6 +1,9 @@
 const express = require('express');
 // const minimist = require('minimist');
 const app = express();
+const database = require('./database.js')
+const morgan = require('morgan')
+const fs = require('fs')
 
 
 // Require minimist module
