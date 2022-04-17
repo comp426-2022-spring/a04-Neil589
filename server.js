@@ -62,13 +62,13 @@ app.use( (req, res, next) => {
         status: res.statusCode,
         referer: req.headers['referer'],
         useragent: req.headers['user-agent']
-    }
+    };
 
     console.log(logdata);
-    
-    const prep = db.prepare('INSERT INTO accesslog (remoteaddr,remoteuser,time,method,url,protocol,httpversion,status,referer,useragent) VALUES (?,?,?,?,?,?,?,?,?,?)')
 
-    const run = prep.run(logdata.remoteaddr,logdata.remoteuser, logdata.time, logdata.method,logdata.url,logdata.protocol,logdata.httpversion, logdata.satus,logdata.referer, logdata.useragent)
+    const prep = db.prepare('INSERT INTO accesslog (remoteaddr,remoteuser,time,method,url,protocol,httpversion,status,referer,useragent) VALUES (?,?,?,?,?,?,?,?,?,?)');
+
+    const run = prep.run(logdata.remoteaddr,logdata.remoteuser, logdata.time, logdata.method,logdata.url,logdata.protocol,logdata.httpversion, logdata.status,logdata.referer, logdata.useragent)
     next()
 
     })
