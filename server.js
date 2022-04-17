@@ -83,7 +83,7 @@ next()
       });
       //error reponse
       app.get('/app/error', (req, res) => {
-          return Error("Error test successful.")
+          throw new Error("Error test successful.")
       });}
 
 
