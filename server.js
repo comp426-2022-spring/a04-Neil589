@@ -93,12 +93,8 @@ app.use( (req, res, next) => {
         // Create a write stream to append (flags: 'a') to a file
         const WRITESTREAM = fs.createWriteStream('access.log', { flags: 'a' })
         // Set up the access logging middleware
-        app.use(morgan('combined', { stream: accessLog }))
-
-
+        app.use(morgan('combined', { stream: WRITESTREAM}))
       }
-
-
 
 function coinFlip() {
     return Math.random() < 0.5 ? 'heads' : 'tails'
