@@ -40,10 +40,10 @@ app.use(express.urlencoded({extended: true}))
 args['port'];
 const port = args.port ||process.env.port|| 5000;
 
-// const logging = (req, res, next)=>{
-//     console.log(req.body.number)
-//     next()
-// }
+const logging = (req, res, next)=>{
+    console.log(req.body.number)
+    next()
+}
 
 
 const server = app.listen(port, () => {
@@ -73,6 +73,19 @@ app.use( (req, res, next) => {
 next()
 
     })
+
+    //endpoints
+    if(args.debug) {
+      //add accesslog records in db
+      app.get('/app/log/access/', (req, res) => {
+          const records = db.prepare("SELECT * FROM accesslog").all()
+          res.status(200).json(records)
+      });
+      //error reponse
+      app.get('/app/error', (req, res) => {
+          return Error("Error test successful.")
+      });}
+
 
 
 function coinFlip() {
