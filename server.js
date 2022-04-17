@@ -38,7 +38,7 @@ app.use(express.urlencoded({extended: true}))
 
 // const args = minimist(process.argv.slice(2));
 args['port'];
-const port = args.port || 5000;
+const port = args.port || args.env.port|| 5000;
 // const logging = (req, res, next)=>{
 //     console.log(req.body.number)
 //     next()
