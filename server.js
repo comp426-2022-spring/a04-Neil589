@@ -94,6 +94,13 @@ app.use( (req, res, next) => {
         app.use(morgan('combined', { stream: WRITESTREAM}))
       }
 
+
+
+
+
+
+
+
 function coinFlip() {
     return Math.random() < 0.5 ? 'heads' : 'tails'
   }
