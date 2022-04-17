@@ -39,13 +39,10 @@ app.use(express.urlencoded({extended: true}))
 // const args = minimist(process.argv.slice(2));
 args['port'];
 const port = args.port ||process.env.port|| 5000;
-
-const logging = (req, res, next)=>{
-    console.log(req.body.number)
-    next()
-}
-
-
+// const logging = (req, res, next)=>{
+//     console.log(req.body.number)
+//     next()
+// }
 const server = app.listen(port, () => {
     console.log('App listening on port %PORT%'.replace('%PORT%', port))
 });
@@ -85,6 +82,21 @@ app.use( (req, res, next) => {
       app.get('/app/error', (req, res) => {
           throw new Error("Error test successful.")
       });}
+
+      if(!args.log){
+        console.log(
+          "No log file created"
+        )
+      }
+      else{
+        // Use morgan for logging to files
+        // Create a write stream to append (flags: 'a') to a file
+        const WRITESTREAM = fs.createWriteStream('FILE', { flags: 'a' })
+        // Set up the access logging middleware
+        app.use(morgan('FORMAT', { stream: WRITESTREAM }))
+
+
+      }
 
 
 
