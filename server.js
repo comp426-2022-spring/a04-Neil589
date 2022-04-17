@@ -70,7 +70,7 @@ app.use( (req, res, next) => {
     console.log(logdata);
     const db_prep = db.prepare('INSERT INTO accesslog (remoteaddr,remoteuser,time,method,url,protocol,httpversion,status,referer,useragent) VALUES (?,?,?,?,?,?,?,?,?,?)');
     const db_run = db_prep.run(logdata.remoteaddr,logdata.remoteuser, logdata.time, logdata.method,logdata.url,logdata.protocol,logdata.httpversion, logdata.satus,logdata.referer, logdata.useragent)
-next()
+    next()
 
     })
 
@@ -78,8 +78,8 @@ next()
     if(args.debug) {
       //add accesslog records in db
       app.get('/app/log/access/', (req, res) => {
-          const records = db.prepare("SELECT * FROM accesslog").all()
-          res.status(200).json(records)
+          const db_prep = db.prepare("SELECT * FROM accesslog").all()
+          res.status(200).json(db_prep)
       });
       //error reponse
       app.get('/app/error', (req, res) => {
