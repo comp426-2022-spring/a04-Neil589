@@ -77,7 +77,7 @@ app.use( (req, res, next) => {
     if(args.debug) {
       //add accesslog records in db
       app.get('/app/log/access/', (req, res) => {
-          const prep = db.prepare("SELECT * FROM accesslog").all()
+          const prep = database.prepare("SELECT * FROM accesslog").all()
           res.status(200).json(prep)
       });
       //error reponse
