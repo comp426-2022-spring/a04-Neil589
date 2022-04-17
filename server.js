@@ -85,7 +85,7 @@ app.use( (req, res, next) => {
           throw new Error("Error test successful.")
       });}
 
-      if(args.log === "false"){}
+      if(!args.log){}
       else{
         // Use morgan for logging to files
         // Create a write stream to append (flags: 'a') to a file
