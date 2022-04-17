@@ -38,7 +38,7 @@ app.use(express.urlencoded({extended: true}))
 
 // const args = minimist(process.argv.slice(2));
 args['port'];
-const port = args.port ||process.env.port|| 5000;
+const port = args.port || 5000;
 // const logging = (req, res, next)=>{
 //     console.log(req.body.number)
 //     next()
@@ -77,8 +77,8 @@ app.use( (req, res, next) => {
     if(args.debug) {
       //add accesslog records in db
       app.get('/app/log/access/', (req, res) => {
-          const db_prep = db.prepare("SELECT * FROM accesslog").all()
-          res.status(200).json(db_prep)
+          const prep = db.prepare("SELECT * FROM accesslog").all()
+          res.status(200).json(prep)
       });
       //error reponse
       app.get('/app/error', (req, res) => {
